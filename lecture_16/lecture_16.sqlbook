@@ -48,13 +48,14 @@ DROP TABLE IF EXISTS drivers;
 
 Create empty table from codebook
 -- SQLBook: Code
+-- Active: 1698522859475@@127.0.0.1@5432@postgres
 -- Create empty TABLE called "drivers"
 -- This example has five arguments separated by a comma
 -- that contain the "column_name" and "column_type", respectively
 
 CREATE TABLE drivers(
     driver_id int,
-    driver_name varchar(30),
+    driver_name varchar(30), -- length
     nationality varchar(15),
     victories int
 );    
@@ -98,8 +99,8 @@ Try it yourself!
 -- Add your name/nationality and your neighbors'
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
-
-
+INSERT INTO drivers VALUES (5,'Max Verstappen','Dutch',51);
+INSERT INTO drivers VALUES (6,'Juan Pablo Montoya','Colombian',6);
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
@@ -186,7 +187,8 @@ Try it yourself!
 with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
-
+SELECT driver_name, victories, nationality, driver_id FROM drivers
+WHERE victories >60;
 
 
 -- SQLBook: Markup
