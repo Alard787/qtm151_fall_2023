@@ -36,7 +36,7 @@ panel on the left:
 
 Delete existing table
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@postgres
+-- Active: 1699305806158@@127.0.0.1@5432@postgres
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
 -- System commands are in upper case and user defined
@@ -85,8 +85,8 @@ View the table in the VSC "Database" Panel
 $\qquad$ <img src="figures/view_table_sql.png" alt="drawing" width="350"/>
 
 -- SQLBook: Code
--- In SQL, a set of tables is called a "Schema"
--- Click "refresh" to see changes
+-- In SQL, a set of tables is called a "Schema" (IMPORTANT)
+-- Click "refresh" to see changes..
 -- The pencil button edits column attributes
 -- The three-stripes button opens the table
 -- SQLBook: Markup
@@ -137,7 +137,7 @@ WHERE nationality = 'United States';
 
 -- Evaluate AND conditions
 SELECT * FROM drivers
-WHERE (driver_id = 2);
+WHERE (nationality = 'German') AND (driver_id = 2);
 
 -- SQLBook: Markup
 <font size="5"> 
@@ -188,7 +188,8 @@ Try it yourself!
 with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
-SELECT driver_name, nationality, driver_id, victories FROM drivers;
+SELECT driver_name, nationality, driver_id, victories FROM drivers
+WHERE victories > 60;
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>

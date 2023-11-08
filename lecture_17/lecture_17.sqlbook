@@ -26,16 +26,20 @@ United States Congress dataset
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Create and Activate a New Database </span>
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@postgres
-
+-- Active: 1699305806158@@127.0.0.1@5432@postgres
 DROP DATABASE IF EXISTS us_congress;
 -- SQLBook: Code
+CREATE DATABASE formula1;
+-- SQLBook: Code
+-- Active: 1699305806158@@127.0.0.1@5432@postgres
 CREATE DATABASE us_congress;
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@us_congress
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 CREATE SCHEMA bills;
 
 CREATE SCHEMA members;
+-- SQLBook: Code
+DROP SCHEMA members;
 -- SQLBook: Markup
 <font size = "5">
 
@@ -43,7 +47,7 @@ CREATE SCHEMA members;
 
 - Click on the ```Active Connection``` button and choose the correct database
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@us_congress
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress@bills
 DROP TABLE IF EXISTS bills.bills_actions;
 DROP TABLE IF EXISTS bills.bills_subjects;
 DROP TABLE IF EXISTS members.us_congress_members;
@@ -141,6 +145,7 @@ Use the following code to view the datasets: us_congress_members, bills_subjects
 SELECT * FROM schemas_name.tables_name
 ```
 -- SQLBook: Code
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 -- Write your own code
 SELECT * FROM members.us_congress_members;
 -- SQLBook: Markup
@@ -155,6 +160,7 @@ Import the data before proceeding!
 
 Count unique rows
 -- SQLBook: Code
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 -- COUNT(DISTINCT ) computes the number of unique rows
 -- "AS" is the alias or name of the statistic
 
@@ -165,6 +171,7 @@ FROM members.us_congress_members
 <font size = "5">
 Display unique rows
 -- SQLBook: Code
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 SELECT party_name       
 FROM members.us_congress_members
 GROUP BY party_name
@@ -173,7 +180,7 @@ GROUP BY party_name
 
 Count members of group
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@us_congress
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 SELECT party_name,       
        COUNT(*) AS num_members       
 FROM members.us_congress_members
@@ -183,6 +190,7 @@ GROUP BY party_name;
 
 Merge Databases
 -- SQLBook: Code
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 -- FROM indicates the primary table
 -- LEFT JOIN indicates the secondary table for merging
 -- ON ... = ... is the matching column
@@ -192,7 +200,7 @@ Merge Databases
 
 SELECT * 
 FROM bills.bills_actions
-LEFT JOIN members.us_congress_members
+LEFT JOIN members.us_congress_members -- Bills actions (on the left) as primary table
 ON us_congress_members.member_id  = bills_actions.member_id;
 -- SQLBook: Markup
 <font size = "5">
@@ -217,7 +225,7 @@ AND schema1.table1.key1_3 = schema2.table2.key2_3;
 
 - **Hint:** the rows in the two tables are uniquely identified by the columns: ```congress```, ```bill_number```, ```bill_type```
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@us_congress
+-- Active: 1699305806158@@127.0.0.1@5432@us_congress
 -- Write your own code
 SELECT * FROM bills.bills_actions
 LEFT JOIN bills.bills_subjects
